@@ -1,0 +1,27 @@
+.file-div {
+  float: left;
+  padding: 0px 8px 0px 5px;
+}
+.popup-row-data {
+  width: 295px;
+  float: left;
+}
+
+.remove-div > .far.fa-trash-alt {
+  cursor: pointer;
+}
+.remove-div > .far.fa-trash-alt:hover {
+  color: coral;
+}
+
+.popup-row-data {
+  cursor: pointer;
+  transition: 0.1s;
+}
+.popup-row-data:hover {
+  color: coral;
+}
+
+.popup-input-data {
+  float: left;
+}
