@@ -19,6 +19,7 @@ It is just a simple application for checking attendance of workers, students or 
 - Vanilla JS
 - jsPDF
 - ESLint
+- LocalStorage
 
 ## Link to the project
 
