@@ -2,7 +2,7 @@
 
 ## What is Attendance-list?
 
-It is just a simple application for checking attendance of workers, students or whoever you want. The clock will help you check when workers is going to be late. When you check the list, then you can download this in pdf!
+It is just a simple application for checking attendance of workers, students or whoever you want. The clock will help you check when workers are going to be late. When you check the list, then you can download this in pdf!
 
 ## How does it work?
 
