@@ -27,4 +27,32 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 
 ##  Files structure
 
+|--jsPDF
+   '--...
+|--v2.3
+   |--fontawesome-free-5.11.2-web
+      '--...
+   |-modules
+      |--List
+         |--Person.js
+         'UI.js
+      |--List_interface
+         |--createList.js
+         '--pdfButton.js
+      |--Navbar_Buttons
+         '--navButtons.js
+      |--Popup
+         |--List.js
+         |--PopUpUI.js
+         |--inPopUp.js
+         '--openClosePopUp.js
+      |--counter.js
+      '--loadLocalStorage.js
+   |--popup
+   |--index.html
+   |--init.js
+   '--main.css
+|--gitignore
+'--README.md
+
 
