@@ -27,6 +27,7 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 
 ##  Files structure
 
+```bash
 |--jsPDF
    '--...
 |--v2.3
@@ -54,5 +55,5 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
    '--main.css
 |--gitignore
 '--README.md
-
+```
 
