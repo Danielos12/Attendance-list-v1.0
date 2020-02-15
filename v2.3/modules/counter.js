@@ -1,13 +1,13 @@
 export default function startTime() {
-  var today = new Date();
-  var hr = today.getHours();
-  var min = today.getMinutes();
-  var sec = today.getSeconds();
+  let today = new Date();
+  let hr = today.getHours();
+  let min = today.getMinutes();
+  let sec = today.getSeconds();
   //Add a zero in front of numbers<10
   min = checkTime(min);
   sec = checkTime(sec);
   document.getElementById('clockTimer').innerHTML = `${hr} : ${min} : ${sec}`;
-  var time = setTimeout(function() {
+  let time = setTimeout(function() {
     startTime();
   }, 500);
 }
