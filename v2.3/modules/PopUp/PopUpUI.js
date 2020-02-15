@@ -1,16 +1,16 @@
 export default function PopUpUI() {}
 
 PopUpUI.addListData = function addListData(list) {
-  var documentFragment = document.createDocumentFragment();
-  var containerList = document.querySelector('#modalBody');
-  var rowDataContainer = document.createElement('DIV');
-  var rowName = document.createElement('DIV');
-  var rowFileIcon = document.createElement('DIV');
-  var rowRemoveIcon = document.createElement('DIV');
-  var fileIcon = document.createElement('i');
-  var removeIcon = document.createElement('i');
+  let documentFragment = document.createDocumentFragment();
+  let containerList = document.querySelector('#modalBody');
+  let rowDataContainer = document.createElement('DIV');
+  let rowName = document.createElement('DIV');
+  let rowFileIcon = document.createElement('DIV');
+  let rowRemoveIcon = document.createElement('DIV');
+  let fileIcon = document.createElement('i');
+  let removeIcon = document.createElement('i');
 
-  var clearBoth = document.createElement('DIV');
+  let clearBoth = document.createElement('DIV');
   clearBoth.setAttribute('style', 'clear:both;');
   rowDataContainer.className = 'popup-row-data-container';
   rowRemoveIcon.className = 'remove-div';
@@ -19,7 +19,7 @@ PopUpUI.addListData = function addListData(list) {
   fileIcon.className = 'far fa-file';
   removeIcon.className = 'far fa-trash-alt';
 
-  var textName = document.createTextNode(list.name);
+  let textName = document.createTextNode(list.name);
 
   rowName.appendChild(textName);
 
@@ -27,7 +27,7 @@ PopUpUI.addListData = function addListData(list) {
   rowRemoveIcon.appendChild(removeIcon);
   rowFileIcon.appendChild(fileIcon);
 
-  var tab = [rowFileIcon, rowName, rowRemoveIcon, clearBoth];
+  let tab = [rowFileIcon, rowName, rowRemoveIcon, clearBoth];
   tab.map(item => {
     rowDataContainer.appendChild(item);
   });
