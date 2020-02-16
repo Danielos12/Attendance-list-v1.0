@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 When we enter our application, then the content must be loaded. We can do that by setting event lister to global object `window`.
 Then the event `load` will be triggered every time when we enter our website. Then functions `startTime()` and `loadLocalStorage()`
-will be initialize. 
+will be initialize.
 
 ```javascript
  //load content and counter
@@ -126,6 +126,7 @@ will be initialize.
   });
 });
 ```
+The working of the `load LocalStorage()` function I am going to explain soon in the next parts. Now, let's find out more about the `start Time()` function.
 
 ## counter.js
 
