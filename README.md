@@ -58,6 +58,67 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 ```
 
 ## Introduction
-Entire principle working based on three types of language. We are talking about CSS, HTML and JS. In `index.html` I placed the static elements, that we see in the moment of visiting our application such as: navbar, icons, attendance list ect. In `main.css` and in `popup` folder I placed CSS files to style our elements. The most important thing that I want to discuss is part about Javascript, because the most significant functionality of this application is based on this language. 
+Entire principle working based on three types of language. We are talking about CSS, HTML and JS. In `index.html` I placed the static elements, that we see in the moment of visiting our application such as: navbar, icons, attendance list ect. In `main.css` and in `popup` folder I placed CSS files to style our elements. The most important thing that I want to discuss is part about Javascript, because the most significant functionality of this application is based on this language. So let's get started!
+
+## init.js
+In this file I placed handlers and event listeners to control every event from user input. As you can see, there are also key words like `import` and `export`. Thanks for these features, which comes from ES6, we can in a simple way split our code to modules making that our code is more readable and clear.
+
+```javascript
+import * as NavButtons from './modules/Navbar_Buttons/navButtons.js';
+const {
+  storeDataInLocalStorage,
+  loadDataFromLocalStorage,
+  getNevListPopUp
+} = NavButtons;
+
+import * as InPopUp from './modules/PopUp/inPopUp.js';
+const { eventForListButtons, createNewListForm } = InPopUp;
+
+import * as CreateList from './modules/List_interface/createList.js';
+const { createNewPersonForm, removeRow, selectButton, clearList } = CreateList;
+
+import { generatePDF } from './modules/List_interface/pdfButton.js';
+
+import startTime from './modules/counter.js';
+import loadLocalStorage from './modules/loadLocalStorage.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  //navButtons.js
+  const storageBtn = document.querySelector('#storage-btn');
+  const loadBtn = document.querySelector('#load-btn');
+  const newList = document.querySelector('#newlist-btn');
+  storageBtn.addEventListener('click', storeDataInLocalStorage);
+  loadBtn.addEventListener('click', loadDataFromLocalStorage);
+  newList.addEventListener('click', getNevListPopUp);
+
+  //inPopUp.js
+  const containerList = document.querySelector('#modalBody');
+  const popUpFormContainer = document.querySelector('.pop-up-form-container');
+  containerList.addEventListener('click', eventForListButtons);
+  popUpFormContainer.addEventListener('submit', createNewListForm);
+
+  //createList.js
+  const eraserBtn = document.querySelector('.fas.fa-eraser');
+  const formContainer = document.querySelector('.form-container');
+  const containerPerson = document.querySelector('#container-person');
+  formContainer.addEventListener('submit', createNewPersonForm);
+  containerPerson.addEventListener('click', removeRow);
+  containerPerson.addEventListener('click', selectButton);
+  eraserBtn.addEventListener('click', clearList);
+
+  //pdfButton
+  const pdfButton = document.querySelector('#pdf-button');
+  pdfButton.addEventListener('click', generatePDF);
+
+  //load content and counter
+  window.addEventListener('load', () => {
+    startTime();
+    loadLocalStorage();
+  });
+});
+
+```
+
+
 
 
