@@ -57,3 +57,7 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 `--README.md
 ```
 
+## Introduction
+Entire principle working based on three types of language. We are talking about CSS, HTML and JS. In `index.html` I placed the static elements, that we see in the moment of visiting our application such as: navbar, icons, attendance list ect. In `main.css` and in `popup` folder I placed CSS files to style our elements. The most important thing that I want to discuss is part about Javascript, because the most significant functionality of this application is based on this language. 
+
+
