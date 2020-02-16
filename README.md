@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 ```
 
 When we enter our application, then the content must be loaded. We can do that by setting event lister to global object `window`.
-Then the event `load` will be triggered every time when we enter our website.
+Then the event `load` will be triggered every time when we enter our website. Then functions `startTime()` and `loadLocalStorage()`
+will be initialize. 
 
 ```javascript
  //load content and counter
@@ -125,6 +126,7 @@ Then the event `load` will be triggered every time when we enter our website.
   });
 });
 ```
+Both functions will be describe in next parts.
 
 
 
