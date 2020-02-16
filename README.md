@@ -126,7 +126,33 @@ will be initialize.
   });
 });
 ```
-Both functions will be describe in next parts.
+
+## counter.js
+
+```javascript
+export default function startTime() {
+  let today = new Date();
+  let hr = today.getHours();
+  let min = today.getMinutes();
+  let sec = today.getSeconds();
+  min = checkTime(min);
+  sec = checkTime(sec);
+  document.getElementById('clockTimer').innerHTML = `${hr} : ${min} : ${sec}`;
+  let time = setTimeout(function() {
+    startTime();
+  }, 500);
+}
+//Add a zero in front of numbers<10
+function checkTime(i) {
+  if (i < 10) {
+    i = '0' + i;
+  }
+  return i;
+}
+```
+
+In this module, we export, previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by Template String (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us quite nice a real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
+
 
 
 
