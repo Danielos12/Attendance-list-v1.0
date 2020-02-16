@@ -61,7 +61,7 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 Entire principle working based on three types of language. We are talking about CSS, HTML and JS. In `index.html` I placed the static elements, that we see in the moment of visiting our application such as: navbar, icons, attendance list ect. In `main.css` and in `popup` folder I placed CSS files to style our elements. The most important thing that I want to discuss is part about Javascript, because the most significant functionality of this application is based on this language. So let's get started!
 
 ## init.js
-In this file I placed handlers and event listeners to control every event from user input. As you can see, there are also key words like `import` and `export`. Thanks for these features, which comes from ES6, we can in a simple way split our code to modules making that our code is more readable and clear.
+In this file, I placed handlers and event listeners to control every event from user input like click or sending the form. As you can see, there are also key words like `import` and `export`. Thanks for these features, which comes from ES6, we can in a simple way split our code to modules making that our code is more readable and clear.
 
 ```javascript
 import * as NavButtons from './modules/Navbar_Buttons/navButtons.js';
@@ -110,15 +110,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const pdfButton = document.querySelector('#pdf-button');
   pdfButton.addEventListener('click', generatePDF);
 
-  //load content and counter
+ // ...
+
+```
+
+When we enter our application, then the content must be loaded. We can do that by setting event lister to global object `window`.
+Then the event `load` will be triggered every time when we enter our website.
+
+```javascript
+ //load content and counter
   window.addEventListener('load', () => {
     startTime();
     loadLocalStorage();
   });
 });
-
 ```
-
 
 
 
