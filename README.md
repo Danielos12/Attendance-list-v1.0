@@ -4,12 +4,12 @@
 1. [What is Attendance-list?](#topic_1)
 2. [How does it work?](#topic_2)
 3. [Used technologies](#topic_3)
-4. [Link to the project](#topic_5)
-5. [File structure](#topic_6)
-6. [Introduction](#topic_7)
-7. [init.js](#topic_8)
-8. [counter.js](#topic_9)
-9. [How is the list created?](#topic_10)
+4. [Link to the project](#topic_4)
+5. [File structure](#topic_5)
+6. [Introduction](#topic_6)
+7. [init.js](#topic_7)
+8. [counter.js](#topic_8)
+9. [How is the list created?](#topic_9)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
