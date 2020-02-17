@@ -1,9 +1,15 @@
 # Attendance-list-v1.0
 
 ## Table of Contents
-1. [ Description. ](#topic_1)
-2. [ Usage tips. ](#topic_2)
-
+1. [What is Attendance-list?.](#topic_1)
+2. [How does it work?](#topic_2)
+3. [Used technologies](#topic_3)
+4. [Link to the project](#topic_4)
+5. []
+6. []
+7. []
+8. []
+9. []
 <a name="topic_1"></a>
 ## What is Attendance-list?
 
@@ -20,17 +26,20 @@ It is just a simple application for checking attendance of workers, students or 
 6. If you want you can download this in pdf.
 7. After that you can save list by clickin on "save" button in navbar!
 
-## Technologies
+<a name="topic_3></a>
+## Used technologies
 
 - Vanilla JS
 - jsPDF
 - ESLint
 - LocalStorage
 
+<a name="topic_3></a>
 ## Link to the project
 
 https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 
+<a name="topic_4></a>
 ##  File structure
 
 ```bash
