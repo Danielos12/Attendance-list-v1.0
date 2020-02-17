@@ -7,7 +7,7 @@
 4. [Link to the project](#topic_4)
 5. [File structure](#topic_5)
 
-# Documentation description
+### Documentation description
 6. [Introduction](#topic_6)
 7. [init.js](#topic_7)
 8. [counter.js](#topic_8)
