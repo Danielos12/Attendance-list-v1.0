@@ -8,10 +8,10 @@
 5. [File structure](#topic_5)
 
 ### Documentation description
-6. [Introduction](#topic_6)
-7. [init.js](#topic_7)
-8. [counter.js](#topic_8)
-9. [How is the list created?](#topic_9)
+1. [Introduction](#topic_6)
+2. [init.js](#topic_7)
+3. [counter.js](#topic_8)
+4. [How is the list created?](#topic_9)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
