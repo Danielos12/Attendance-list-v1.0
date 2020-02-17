@@ -154,6 +154,76 @@ function checkTime(i) {
 
 In this module, we export, previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by Template String (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us quite nice a real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
 
+## How to create a list?
+In the first step, we have to look into `init.js`. Then we will see handlers associated with our list interface. The handler that interested us is `formContainer`. Thanks to this one we can submit our form from the inputs.
 
+```javascript
+//createList.js
+  const eraserBtn = document.querySelector('.fas.fa-eraser');
+  const formContainer = document.querySelector('.form-container'); <<<---- mentioned handler
+  const containerPerson = document.querySelector('#container-person');
+  formContainer.addEventListener('submit', createNewPersonForm);
+  containerPerson.addEventListener('click', removeRow);
+  containerPerson.addEventListener('click', selectButton);
+  eraserBtn.addEventListener('click', clearList);
+```
+
+
+Then we must go to `createList.js` and take a look at `createNewPersonForm` function. Inside of this, we have handlers necessary to operating on our DOM elements.
+
+```javascript
+const createNewPersonForm = e => {
+  // take value from DOM elements
+  const name = document.forms.Form['input-name'].value;
+  const surname = document.forms.Form['input-surname'].value;
+  const time = document.querySelector('#clockTimer').textContent;
+
+  // use preventDefault() to prevent submitting a form
+  e.preventDefault();
+  const inputname = document.querySelector('#data-name');
+  const inputsurname = document.querySelector('#data-surname');
+  const conPer = document.querySelector('.container-person');
+// ...
+```
+Now we have to operate on `UI` and `Person` classes. In order to do that, we are going to import them, on the very top of our current file. I am going to describe them in detail in the next step.
+
+```javascript
+import UI from '../List/UI.js';
+import Person from '../List/Person.js';
+// ...
+```
+
+Then we must create an instance of class `Person`, in order to insert our data from the inputs and clock. After a visual operation in the interface, our function goes to the `UI` object and perform `addRowData()` method to display our data.
+
+```javascript
+ // put variables into Person's constructor
+  const person = new Person(name, surname, time);
+
+  if (inputname.value !== '' && inputsurname.value !== '') {
+    if (conPer.className === 'container-person') {
+      // change style of this element
+      conPer.classList.toggle('fill');
+    }
+    if (document.querySelector('.container-person-field')) {
+      document.querySelector('.container-person-field').remove();
+    }
+    // add the new div
+    UI.addRowData(person);
+    UI.clearInput(inputname, inputsurname);
+    inputname.focus();
+  }
+};
+```
+
+At the end don't forget to export our function, to put this in event listener in `init.js` file.
+
+```javascript
+import UI from '../List/UI.js';
+import Person from '../List/Person.js';
+
+export { createNewPersonForm, ...};
+```
+
+That way of code creating works similarly in other modules.
 
 
