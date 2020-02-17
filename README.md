@@ -4,12 +4,13 @@
 1. [What is Attendance-list?](#topic_1)
 2. [How does it work?](#topic_2)
 3. [Used technologies](#topic_3)
-4. [Link to the project](#topic_4)
-5. []
-6. []
-7. []
-8. []
-9. []
+4. [Link to the project](#topic_5)
+5. [File structure](#topic_6)
+6. [Introduction](#topic_7)
+7. [init.js](#topic_8)
+8. [counter.js](#topic_9)
+9. [How is the list created?](#topic_10)
+
 <a name="topic_1"></a>
 ## What is Attendance-list?
 
@@ -34,10 +35,12 @@ It is just a simple application for checking attendance of workers, students or 
 - ESLint
 - LocalStorage
 
+<a name="topic_4"></a>
 ## Link to the project
 
 https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 
+<a name="topic_5"></a>
 ##  File structure
 
 ```bash
@@ -69,10 +72,11 @@ https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 |--gitignore
 `--README.md
 ```
-
+<a name="topic_6"></a>
 ## Introduction
 Entire principle working based on three types of language. We are talking about CSS, HTML and JS. In `index.html` I placed the static elements, that we see in the moment of visiting our application such as: navbar, icons, attendance list ect. In `main.css` and in `popup` folder I placed CSS files to style our elements. The most important thing that I want to discuss is part about Javascript, because the most significant functionality of this application is based on this language. So let's get started!
 
+<a name="topic_7"></a>
 ## init.js
 In this file, I placed handlers and event listeners to control every event from user input like click or sending the form. As you can see, there are also key words like `import` and `export`. Thanks for these features, which comes from ES6, we can in a simple way split our code to modules making that our code is more readable and clear.
 
@@ -141,6 +145,7 @@ will be initialize.
 ```
 The working of the `load LocalStorage()` function I am going to explain soon in the next parts. Now, let's find out more about the `start Time()` function.
 
+<a name="topic_8"></a>
 ## counter.js
 
 ```javascript
@@ -167,6 +172,7 @@ function checkTime(i) {
 
 In this module, we export, previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by Template String (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us quite nice a real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
 
+<a name="topic_9"></a>
 ## How is the list created?
 In the first step, we have to look into `init.js`. Then we will see handlers associated with our list interface. The handler that interested us is `formContainer`. Thanks to this one we can submit our form from the inputs.
 
