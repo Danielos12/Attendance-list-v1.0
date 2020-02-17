@@ -26,6 +26,7 @@ It is just a simple application for checking attendance of workers, students or 
 6. If you want you can download this in pdf.
 7. After that you can save list by clickin on "save" button in navbar!
 
+<a name="topic_3"></a>
 ## Used technologies
 
 - Vanilla JS
