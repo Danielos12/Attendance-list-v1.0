@@ -247,6 +247,96 @@ export { createNewPersonForm, ...};
 
 That way of code implementation works similarly in other modules.
 
-## 
+<a name="topic_10"></a>
+## Person.js and UI.js
+Now we should take a look better on this ones. The first one is `Person.js`
+
+```javascript
+export default function Person(name, surname, time) {
+  this.name = name;
+  this.surname = surname;
+  this.time = time;
+}
+```
+`Person` function acts as simple constructor. Thanks to it we can create new row with data of given person in `UI.js` file.
+In `addRowData()` function there are created buttons and other DOM elements for new person row. Then we can attach all elements in `documentFragment`.
+
+```javascript
+export default function UI() {}
+
+UI.addRowData = function addRowData(person) {
+  const documentFragment = document.createDocumentFragment();
+  const containerPerson = document.querySelector('#container-person');
+  const rowDataContainer = document.createElement('DIV'); // creating divs
+  const rowName = document.createElement('DIV');
+  const rowSurename = document.createElement('DIV');
+  const rowTime = document.createElement('DIV');
+  const removeButton = document.createElement('BUTTON');
+  const checkButton = document.createElement('BUTTON');
+  const timesButton = document.createElement('BUTTON');
+
+  const imageReBtn = document.createElement('i');
+  const imageCheBtn = document.createElement('i');
+  const imageTimBtn = document.createElement('i');
+
+  const clearBoth = document.createElement('DIV');
+
+  clearBoth.setAttribute('style', 'clear:both;'); // remove float: left from rowDataContainer's childrens
+
+  rowDataContainer.className = 'row-data-container'; // giving class to every new divs
+  rowName.className = 'row-data';
+  rowSurename.className = 'row-data';
+  rowTime.className = 'row-data';
+
+  removeButton.className = 'remove-button';
+  checkButton.className = 'check-button';
+  timesButton.className = 'times-button';
+
+  imageReBtn.className = 'fa fa-trash';
+  imageCheBtn.className = 'fas fa-check';
+  imageTimBtn.className = 'fas fa-times';
+
+  const textName = document.createTextNode(person.name); // collection data from the inputs
+  const textSurename = document.createTextNode(person.surname);
+  const textTime = document.createTextNode(person.time);
+
+  rowName.appendChild(textName);
+  rowSurename.appendChild(textSurename);
+  removeButton.appendChild(imageReBtn);
+  checkButton.appendChild(imageCheBtn);
+  timesButton.appendChild(imageTimBtn);
+  rowTime.appendChild(textTime);
+
+  // -----------documentFragment---------------
+  documentFragment.appendChild(rowDataContainer);
+  // ...
+```
+
+After that, all DOM elements are put in an array and the `map` method is carried out on them to append all children to row person.
+In the end, the `documentFragment` is appended to `containerPerson`, which is our container for rows.
+
+```javascript
+const tab = [
+    rowName,
+    rowSurename,
+    rowTime,
+    removeButton,
+    checkButton,
+    timesButton,
+    clearBoth
+  ];
+  tab.map(item => {
+    rowDataContainer.appendChild(item);
+  });
+  containerPerson.appendChild(documentFragment);
+};
+
+// clear the inputs
+UI.clearInput = function(inputname, inputsurname) {
+  inputname.value = '';
+  inputsurname.value = '';
+};
+```
+
 
 
