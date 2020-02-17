@@ -1,9 +1,15 @@
 # Attendance-list-v1.0
 
+## Table of Contents
+1. [ Description. ](#topic_1)
+2. [ Usage tips. ](#topic_2)
+
+<a name="topic_1"></a>
 ## What is Attendance-list?
 
 It is just a simple application for checking attendance of workers, students or whoever you want. The clock will help you check when workers are going to be late. When you check the list, then you can download this in pdf!
 
+<a name="topic_2"></a>
 ## How does it work?
 
 1. Create a single list.
@@ -160,7 +166,7 @@ In the first step, we have to look into `init.js`. Then we will see handlers ass
 ```javascript
 //createList.js
   const eraserBtn = document.querySelector('.fas.fa-eraser');
-  const formContainer = document.querySelector('.form-container'); <<<---- mentioned handler
+  const formContainer = document.querySelector('.form-container'); //<<<---- mentioned handler
   const containerPerson = document.querySelector('#container-person');
   formContainer.addEventListener('submit', createNewPersonForm);
   containerPerson.addEventListener('click', removeRow);
@@ -225,5 +231,7 @@ export { createNewPersonForm, ...};
 ```
 
 That way of code implementation works similarly in other modules.
+
+## 
 
 
