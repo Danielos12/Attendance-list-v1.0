@@ -215,7 +215,7 @@ Then we must create an instance of class `Person`, in order to insert our data f
 };
 ```
 
-At the end don't forget to export our function, to put this in event listener in `init.js` file.
+In the end don't forget to export our function, to put it in event listener in `init.js` file.
 
 ```javascript
 import UI from '../List/UI.js';
@@ -224,6 +224,6 @@ import Person from '../List/Person.js';
 export { createNewPersonForm, ...};
 ```
 
-That way of code creating works similarly in other modules.
+That way of code implementation works similarly in other modules.
 
 
