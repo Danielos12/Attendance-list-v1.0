@@ -154,7 +154,7 @@ function checkTime(i) {
 
 In this module, we export, previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by Template String (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us quite nice a real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
 
-## How to create a list?
+## How is the list created?
 In the first step, we have to look into `init.js`. Then we will see handlers associated with our list interface. The handler that interested us is `formContainer`. Thanks to this one we can submit our form from the inputs.
 
 ```javascript
