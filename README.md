@@ -415,6 +415,245 @@ const clearList = () => {
 
 ```
 
+## Popups
+Thanks to popups, the UI can be extended by additional windows allowing append new options.
+
+### openClosePopUp.js
+In this file, there are functions responsible for displaying popups for the given button.
+
+```javascript
+import loadLocalStorage from '../loadLocalStorage.js';
+
+export { openPopUpForCreateListBtn, openPopUpForLoadBtn };
+
+const openPopUpForCreateListBtn = () => {
+  const modal = document.getElementById('createNewModal');
+
+  const span = document.getElementById('closeTwo');
+
+  modal.style.display = 'block';
+
+  span.onclick = () => {
+    modal.style.display = 'none';
+  };
+
+  window.onclick = event => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  };
+};
+
+const openPopUpForLoadBtn = () => {
+  const modalBody = document.querySelector('#modalBody');
+  // Get the modal
+  const modal = document.getElementById('loadModal');
+
+  const span = document.getElementById('closeOne');
+
+  modal.style.display = 'block';
+  removePersons(modalBody);
+  loadLocalStorage();
+
+  span.onclick = () => {
+    modal.style.display = 'none';
+    removePersons(modalBody);
+  };
+
+  window.onclick = event => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      removePersons(modalBody);
+    }
+  };
+};
+
+function removePersons(object) {
+  while (object.firstChild) {
+    object.removeChild(object.firstChild);
+  }
+}
+
+```
+
+### navButtons.js
+To open the popups it is necessary to attach them to event listeners in **init.js**. There are also used function from **openClosePopUp.js**.
+```javascript
+// ...
+
+const loadDataFromLocalStorage = e => {
+  if (localStorage.length === 0) {
+    alert('The storage is empty!');
+  } else {
+    openPopUpForLoadBtn();
+  }
+};
+
+const getNevListPopUp = () => {
+  openPopUpForCreateListBtn();
+};
+
+```
+
+## inPopUp.js
+This file contain that what is happened in our popups. In `eventForListButtons` was defined functions responsible for removing lists in load popup and crating new list in another popup.
+
+
+```javascript
+
+  const eventForListButtons = e => {
+  const removeButton = e.target.closest('.remove-div');
+  const getName = e.target.closest('.popup-row-data');
+
+  // remove row
+  if (removeButton !== null) {
+    const titleOfListHeader = document.querySelector('.title-of-list-header');
+    const localStorageObjectName =
+      removeButton.parentNode.childNodes[1].textContent;
+    localStorage.removeItem(localStorageObjectName);
+    e.target.closest('.popup-row-data-container').remove();
+
+    if (
+      removeButton.parentNode.querySelector('.popup-row-data').textContent ==
+      titleOfListHeader.textContent
+    ) {
+      clearList();
+      titleOfListHeader.textContent = 'List of members';
+    }
+  }
+
+  // get name and load data
+  if (getName !== null) {
+    const loadBtn = document.querySelector('#load-btn');
+    const storageBtn = document.querySelector('#storage-btn');
+    const getTextName = e.target.closest('.popup-row-data').textContent;
+    const containerPersonId = document.querySelector('.container-person');
+
+    const modal = document.getElementById('loadModal');
+
+    const getNameAndClosePopup = () => {
+      const titleOfListHeader = document.querySelector('.title-of-list-header');
+      titleOfListHeader.textContent = getTextName;
+      modal.style.display = 'none';
+    };
+
+    // ...
+  }
+};
+
+// create a new list
+const createNewListForm = e => {
+  const popUpNewList = null;
+
+  const name = document.forms.FormLoadPopUp.inputCreateNew.value;
+  const inputname = document.querySelector('#inputCreateNew');
+  e.preventDefault();
+  if (name === '') {
+    alert('Cannot create the list without a name');
+  } else {
+    const list = new List(name);
+    PopUpUI.addListData(list);
+
+    PopUpUI.clearInput(inputname);
+    localStorage.setItem(name, popUpNewList);
+  }
+};
+  
+```
+## List.js
+To create the list there is also needed a constructor.
+
+```javascript
+export default function List(name) {
+  this.name = name;
+}
+
+```
+
+## How are new lists created?
+
+In a similar way like in **UI.js**
+
+```javascript
+export default function PopUpUI() {}
+
+PopUpUI.addListData = function addListData(list) {
+  const documentFragment = document.createDocumentFragment();
+  const containerList = document.querySelector('#modalBody');
+  const rowDataContainer = document.createElement('DIV');
+  const rowName = document.createElement('DIV');
+  const rowFileIcon = document.createElement('DIV');
+  const rowRemoveIcon = document.createElement('DIV');
+  const fileIcon = document.createElement('i');
+  const removeIcon = document.createElement('i');
+
+  const clearBoth = document.createElement('DIV');
+  clearBoth.setAttribute('style', 'clear:both;');
+  rowDataContainer.className = 'popup-row-data-container';
+  rowRemoveIcon.className = 'remove-div';
+  rowName.className = 'popup-row-data';
+  rowFileIcon.className = 'file-div';
+  fileIcon.className = 'far fa-file';
+  removeIcon.className = 'far fa-trash-alt';
+
+  const textName = document.createTextNode(list.name);
+
+  rowName.appendChild(textName);
+
+  //-----------documentFragment------------------
+  rowRemoveIcon.appendChild(removeIcon);
+  rowFileIcon.appendChild(fileIcon);
+
+  const tab = [rowFileIcon, rowName, rowRemoveIcon, clearBoth];
+  tab.map(item => {
+    rowDataContainer.appendChild(item);
+  });
+  documentFragment.appendChild(rowDataContainer);
+  containerList.appendChild(documentFragment);
+};
+PopUpUI.clearInput = function(inputname) {
+  inputname.value = '';
+};
+
+```
+
+## How are the persons save?
+ In the **navButtons.js** file there is function that I haven't mentioned before. It's `storeDataInLocalStorage()`. In this case is used `localStorage`, which serves as the database. We declare `obj` as an array to put data from the list's rows. Then the `obj` have to be parsed to string by the `stringify` method because data in `local storage` is saving in JSON format. Finally, the `obj` is set by the `setItem` method.
+
+```javascript
+const storeDataInLocalStorage = () => {
+  let rowDataContainer = document.querySelector('.row-data-container');
+  const containerPerson = document.querySelector('#container-person');
+  const loadBtn = document.querySelector('#load-btn');
+
+  let temp = 1;
+  const obj = [];
+  let myJSON;
+  const getName = storageBtn.dataset.save;
+
+  if (containerPerson.children.length === 0) {
+    alert('Cannot save the empty field! Please fill the content.');
+  } else {
+    if (loadBtn.dataset.index == 0) {
+      temp = 0;
+    }
+    rowDataContainer = containerPerson.childNodes[temp];
+    for (let i = 0; i < containerPerson.children.length; i++) {
+      obj.push({
+        name: rowDataContainer.childNodes[0].innerHTML, // load error
+        surname: rowDataContainer.childNodes[1].innerHTML,
+        time: rowDataContainer.childNodes[2].innerHTML
+      });
+      myJSON = JSON.stringify(obj);
+      if (temp < containerPerson.children.length) {
+        rowDataContainer = containerPerson.childNodes[++temp];
+      }
+    }
+    localStorage.setItem(getName, myJSON);
+    alert(`The list ${getName} has been saved`);
+  }
+};
+```
 
 
 
