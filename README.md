@@ -617,7 +617,7 @@ PopUpUI.clearInput = function(inputname) {
 
 ```
 
-## How are the persons save?
+## How are the persons saved?
  In the **navButtons.js** file there is function that I haven't mentioned before. It's `storeDataInLocalStorage()`. In this case is used `localStorage`, which serves as the database. We declare `obj` as an array to put data from the list's rows. Then the `obj` have to be parsed to string by the `stringify` method because data in `local storage` is saving in JSON format. Finally, the `obj` is set by the `setItem` method.
 
 ```javascript
@@ -654,6 +654,77 @@ const storeDataInLocalStorage = () => {
   }
 };
 ```
+## How is the data loaded?
 
+After saving the data it would be appropiate to load it. In the `inPopup.js` there is certain event, which is responsible for it.
+We are talking about `getName` event. It is triggered if we will click on `'.popup-row-data'`. Based on a name of given list, we can refer to **local storage** and get the object with given key. Then we reach to its properties such as `name`, `surname`, and `time`.
+Thanks to `loadRowData()` the fetched data can be displayed.
 
+```javascript
+  if (getName !== null) {
+    const loadBtn = document.querySelector('#load-btn');
+    const storageBtn = document.querySelector('#storage-btn');
+    const getTextName = e.target.closest('.popup-row-data').textContent;
+    const containerPersonId = document.querySelector('.container-person');
 
+    const modal = document.getElementById('loadModal');
+
+    const getNameAndClosePopup = () => {
+      const titleOfListHeader = document.querySelector('.title-of-list-header');
+      titleOfListHeader.textContent = getTextName;
+      modal.style.display = 'none';
+    };
+
+    if (getName !== null) {
+      const prsdataJSONString = localStorage.getItem(getTextName);
+      const prsdataObjJs = JSON.parse(prsdataJSONString);
+      let name;
+      let surname;
+      let time;
+
+      storageBtn.dataset.save = getTextName;
+      loadBtn.dataset.index = 0;
+
+      const loadRowData = loadPerson => {
+        return UI.addRowData(loadPerson);
+      };
+
+      $('.container-person-field').remove();
+      $('.container-person').addClass('fill');
+      $('#container-person').empty();
+
+      if (prsdataObjJs == null) {
+        containerPersonId.classList.remove('fill');
+        containerPersonId.innerHTML =
+          '<span class="container-person-field">This field is empty. Please, fill the content by rows.</span>';
+        getNameAndClosePopup();
+      } else {
+        for (let i = 0; i < prsdataObjJs.length; i++) {
+          name = prsdataObjJs[i].name;
+          surname = prsdataObjJs[i].surname;
+          time = prsdataObjJs[i].time;
+
+          const loadPerson = new Person(name, surname, time);
+          loadRowData(loadPerson);
+        }
+        getNameAndClosePopup();
+      }
+    }
+  }
+```
+
+## How the lists is loaded after entry to the website?
+
+The solution is pretty easy. In that issue I have used a loop, to iterate on every key (the key is our list), then based on this I created `list` instance and then I used the `addListData` method to display them.
+
+```javascript
+// Load The Content
+export default function loadLocalStorage() {
+  for (let i = 0; i < localStorage.length; i++) {
+    const name = localStorage.key(i);
+    const list = new List(name);
+    PopUpUI.addListData(list);
+  }
+}
+
+```
