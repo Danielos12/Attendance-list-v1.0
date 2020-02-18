@@ -341,7 +341,7 @@ UI.clearInput = function(inputname, inputsurname) {
 ```
 <a name="topic_11"></a>
 ##  How does the interface of the list work?
-In the list's interface (crateList.js) there are enabled four functions, which can be recalled under the impact of the event. Those are `createNewPersonForm`, `removeRow`, `selectButton` and `clearList`. The first one was described, so let's focus on these last three.
+In the list's interface (**crateList.js**) there are enabled four functions, which can be recalled under the impact of the event. Those are `createNewPersonForm`, `removeRow`, `selectButton` and `clearList`. The first one was described, so let's focus on these last three.
 
 ### removeRow()
 That is a pretty simple function. Our `e` argument represents the event. In this case, it is `click` event (look at the event listeners in init.js). The `target` method allows us to get an element that was triggered by the event, and the` closest` method can redirect us to nested element in its parental elements. The `remove()` method as the name suggests, removes the given element from the DOM tree.
