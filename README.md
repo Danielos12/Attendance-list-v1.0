@@ -343,6 +343,7 @@ In the list's interface (crateList.js) there are enabled four functions, which c
 
 ### removeRow()
 That is a pretty simple function. Our `e` argument represents the event. In this case, it is `click` event (look at the event listeners in init.js). The `target` method allows us to get an element that was triggered by the event, and the` closest` method can redirect us to nested element in its parental elements. The `remove()` method as the name suggests, removes the given element from the DOM tree.
+
 ```javascript
 const removeRow = e => {
   if (e.target.closest('.remove-button') !== null) {
@@ -350,5 +351,48 @@ const removeRow = e => {
   }
 };
 ```
+
+### selectButton()
+Here this case looks more complicated. To toggle between `check-button` and `times-button` we need to refer to the DOM tree.
+If `check-button` is clicked, it will change the class on `selected` by the `toggle` method. If we want to trigger sibling element by another element, we need to refer our event through parent object by the `parentNode` method.
+
+```javascript
+ // Change button's class on selected
+  if (e.target.closest('.check-button') !== null) {
+    e.target.closest('.check-button').classList.toggle('selected');
+    e.target
+      .closest('.check-button')
+      .childNodes[0].classList.toggle('selected');
+    const sibs = e.target
+      .closest('.check-button')
+      .parentNode.querySelector('.times-button');
+    // remove 'selected' class from 'times-button' if it has one.
+    if (sibs !== null) {
+      if (sibs.classList.contains('selected')) {
+        sibs.classList.remove('selected');
+        sibs.childNodes[0].classList.remove('selected');
+      }
+    }
+  } 
+  // analogical
+  else if (e.target.closest('.times-button') !== null) {
+    e.target.closest('.times-button').classList.toggle('selected');
+    e.target
+      .closest('.times-button')
+      .childNodes[0].classList.toggle('selected');
+    const sibs = e.target
+      .closest('.times-button')
+      .parentNode.querySelector('.check-button');
+    if (sibs !== null) {
+      if (sibs.classList.contains('selected')) {
+        sibs.classList.remove('selected');
+        sibs.childNodes[0].classList.remove('selected');
+      }
+    }
+  }
+};
+```
+
+
 
 
