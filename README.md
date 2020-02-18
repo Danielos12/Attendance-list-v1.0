@@ -338,5 +338,16 @@ UI.clearInput = function(inputname, inputsurname) {
 };
 ```
 
+##  How does the interface of the list work?
+In the list's interface (crateList.js) there are enabled four functions, which can be recalled under the impact of the event. It is `createNewPersonForm`, `removeRow`, `selectButton` and `clearList`. The first one was described, so let's focus on these last three.
+
+### removeRow()
+```javascript
+const removeRow = e => {
+  if (e.target.closest('.remove-button') !== null) {
+    e.target.closest('.row-data-container').remove();
+  }
+};
+```
 
 
