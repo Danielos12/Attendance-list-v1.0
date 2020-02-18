@@ -12,6 +12,8 @@
 2. [init.js](#topic_7)
 3. [counter.js](#topic_8)
 4. [How is the list created?](#topic_9)
+5. [Person.js and UI.js](#topic_10)
+6. [How does the interface of the list work?](#topic_11)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
@@ -337,7 +339,7 @@ UI.clearInput = function(inputname, inputsurname) {
   inputsurname.value = '';
 };
 ```
-
+<a name="topic_11"></a>
 ##  How does the interface of the list work?
 In the list's interface (crateList.js) there are enabled four functions, which can be recalled under the impact of the event. Those are `createNewPersonForm`, `removeRow`, `selectButton` and `clearList`. The first one was described, so let's focus on these last three.
 
