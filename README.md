@@ -395,6 +395,26 @@ If `check-button` is clicked, it will change the class on `selected` by the `tog
 };
 ```
 
+### clearList()
+This function is responsible for clearing the list from displayed persons. By `while` loop, the container filled by persons is clearing until the last person won't be removed. Then `span` is inserted in `containerPersonId` by the `insertAdjacentHTML`, that insert given element in specified position.
+
+```javascript
+const clearList = () => {
+  const containerPersonId = document.querySelector('#container-person');
+  const containerPersonClass = document.querySelector('.container-person');
+  while (containerPersonId.firstChild) {
+    containerPersonId.removeChild(containerPersonId.firstChild);
+  }
+  const el =
+    '<span class="container-person-field">This field is empty. Please, fill the content by rows.</span>';
+  if (containerPersonId.children.length === 0) {
+    containerPersonClass.classList.remove('fill');
+    containerPersonId.insertAdjacentHTML('beforeend', el);
+  }
+};
+
+```
+
 
 
 
