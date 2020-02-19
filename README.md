@@ -14,6 +14,11 @@
 4. [How is the list created?](#topic_9)
 5. [Person.js and UI.js](#topic_10)
 6. [How does the interface of the list work?](#topic_11)
+7.[Popups](#topic_12)
+8.[How are new lists created?](#topic_13)
+9.[How are the persons saved?](#topic_14)
+10.[How is the data loaded?](#topic_15)
+11.[How the lists is loaded after entry to the website?](#topic_16)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
@@ -414,7 +419,7 @@ const clearList = () => {
 };
 
 ```
-
+<a name="topic_12"></a>
 ## Popups
 Thanks to popups, the UI can be extended by additional windows allowing append new options.
 
@@ -569,7 +574,7 @@ export default function List(name) {
 }
 
 ```
-
+<a name="topic_12"></a>
 ## How are new lists created?
 
 In a similar way like in **UI.js**
@@ -616,7 +621,7 @@ PopUpUI.clearInput = function(inputname) {
 };
 
 ```
-
+<a name="topic_13"></a>
 ## How are the persons saved?
  In the **navButtons.js** file there is function that I haven't mentioned before. It's `storeDataInLocalStorage()`. In this case is used `localStorage`, which serves as the database. We declare `obj` as an array to put data from the list's rows. Then the `obj` have to be parsed to string by the `stringify` method because data in `local storage` is saving in JSON format. Finally, the `obj` is set by the `setItem` method.
 
@@ -654,6 +659,7 @@ const storeDataInLocalStorage = () => {
   }
 };
 ```
+<a name="topic_13"></a>
 ## How is the data loaded?
 
 After saving the data it would be appropiate to load it. In the `inPopup.js` there is certain event, which is responsible for it.
@@ -712,7 +718,7 @@ Thanks to `loadRowData()` the fetched data can be displayed.
     }
   }
 ```
-
+<a name="topic_14"></a>
 ## How the lists is loaded after entry to the website?
 
 The solution is pretty easy. In that issue I have used a loop, to iterate on every key (the key is our list), then based on this I created `list` instance and then I used the `addListData` method to display them.
