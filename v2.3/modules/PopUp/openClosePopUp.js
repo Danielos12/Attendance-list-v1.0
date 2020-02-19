@@ -21,7 +21,7 @@ const openPopUpForCreateListBtn = () => {
 };
 
 const openPopUpForLoadBtn = () => {
-  const modalBody = $('#modalBody');
+  const modalBody = document.querySelector('#modalBody');
   // Get the modal
   const modal = document.getElementById('loadModal');
 
