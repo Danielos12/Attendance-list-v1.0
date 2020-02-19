@@ -153,7 +153,7 @@ will be initialize.
   });
 });
 ```
-The working of the `load LocalStorage()` function I am going to explain soon in the next parts. Now, let's find out more about the `start Time()` function.
+I am going to explain the working of the `loadLocalStorage()` function soon in the next parts. Now, let's find out more about the `start Time()` function.
 
 <a name="topic_8"></a>
 ## counter.js
@@ -180,11 +180,11 @@ function checkTime(i) {
 }
 ```
 
-In this module, we export, previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by Template String (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us quite nice a real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
+In this module, we export previously mentioned function `startTime()`. Using `Date()` object we can concatenate variables by **Template String** (ES6) and place this one in our HTML document by `innerHTML` method. Thanks to `setTimeout()` function, `startTime()` can be recall by 0,5 second delay. That gives us a quite nice real-time simulation. By `checkTime()` function we can put a zero in front of numbers less than 10.
 
 <a name="topic_9"></a>
 ## How is the list created?
-In the first step, we have to look into `init.js`. Then we will see handlers associated with our list interface. The handler that interested us is `formContainer`. Thanks to this one we can submit our form from the inputs.
+In the first step, we have to look into `init.js`. Then we will see handlers associated with our list interface. The handler that interests us is `formContainer`. Thanks to this one we can submit our form from the inputs.
 
 ```javascript
 //createList.js
@@ -214,7 +214,7 @@ const createNewPersonForm = e => {
   const conPer = document.querySelector('.container-person');
 // ...
 ```
-Now we have to operate on `UI` and `Person` classes. In order to do that, we are going to import them, on the very top of our current file. I am going to describe them in detail in the next step.
+Now we have to operate on `UI` and `Person` classes. In order to do that, we are going to import them and place them on the very top of our current file. I am going to describe them in detail in the next step.
 
 ```javascript
 import UI from '../List/UI.js';
@@ -257,7 +257,7 @@ That way of code implementation works similarly in other modules.
 
 <a name="topic_10"></a>
 ## Person.js and UI.js
-Now we should take a look better on this ones. The first one is `Person.js`
+Now we should take a look better on these ones. The first one is `Person.js`
 
 ```javascript
 export default function Person(name, surname, time) {
