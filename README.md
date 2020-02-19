@@ -1,25 +1,27 @@
 # Attendance-list-v1.0
 
 ## Table of Contents
+
+### Short description
 1. [What is Attendance-list?](#topic_1)
 2. [How does it work?](#topic_2)
 3. [Used technologies](#topic_3)
 4. [Link to the project](#topic_4)
-5. [File structure](#topic_5)
 
 ### Documentation description
-1. [Introduction](#topic_6)
-2. [init.js](#topic_7)
-3. [counter.js](#topic_8)
-4. [How is the list created?](#topic_9)
-5. [Person.js and UI.js](#topic_10)
-6. [How does the interface of the list work?](#topic_11)
-7. [Popups](#topic_12)
-8. [How are new lists created?](#topic_13)
-9. [How are the persons saved?](#topic_14)
-10. [How is the data loaded?](#topic_15)
-11. [How the lists are loaded after entry to the website?](#topic_16)
-12. [How the pdf is generated](#topic_17)
+1. [File structure](#topic_5)
+2. [Introduction](#topic_6)
+3. [init.js](#topic_7)
+4. [counter.js](#topic_8)
+5. [How is the list created?](#topic_9)
+6. [Person.js and UI.js](#topic_10)
+7. [How does the interface of the list work?](#topic_11)
+8. [Popups](#topic_12)
+9. [How are new lists created?](#topic_13)
+10. [How are the persons saved?](#topic_14)
+11. [How is the data loaded?](#topic_15)
+12. [How the lists are loaded after entry to the website?](#topic_16)
+13. [How the pdf is generated](#topic_17)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
