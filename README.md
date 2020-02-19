@@ -736,6 +736,7 @@ export default function loadLocalStorage() {
 ```
 <a name="topic_17"></a>
 ## How the pdf is generated?
+In order to do that, it is necessary to create a `doc` instance of `jsPDF()` class. Then it is declared variables `imgCheck` and `imgX` assigning them to **base64** code in which are encoded icons. Afterwards, variables are declared as coordinates for pdf elements and in next step `container` handler (the current list) is passed through nested loop, to place person data in properly sequence.
 
 ```javascript
 const generatePDF = e => {
