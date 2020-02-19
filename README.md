@@ -14,11 +14,11 @@
 4. [How is the list created?](#topic_9)
 5. [Person.js and UI.js](#topic_10)
 6. [How does the interface of the list work?](#topic_11)
-7.[Popups](#topic_12)
-8.[How are new lists created?](#topic_13)
-9.[How are the persons saved?](#topic_14)
-10.[How is the data loaded?](#topic_15)
-11.[How the lists is loaded after entry to the website?](#topic_16)
+7. [Popups](#topic_12)
+8. [How are new lists created?](#topic_13)
+9. [How are the persons saved?](#topic_14)
+10. [How is the data loaded?](#topic_15)
+11. [How the lists is loaded after entry to the website?](#topic_16)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
