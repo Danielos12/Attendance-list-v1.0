@@ -18,7 +18,7 @@
 8. [How are new lists created?](#topic_13)
 9. [How are the persons saved?](#topic_14)
 10. [How is the data loaded?](#topic_15)
-11. [How the lists is loaded after entry to the website?](#topic_16)
+11. [How the lists are loaded after entry to the website?](#topic_16)
 
 <a name="topic_1"></a>
 ## What is Attendance-list?
