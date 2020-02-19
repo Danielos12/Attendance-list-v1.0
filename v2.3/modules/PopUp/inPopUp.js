@@ -34,49 +34,52 @@ const eventForListButtons = e => {
     const storageBtn = document.querySelector('#storage-btn');
     const getTextName = e.target.closest('.popup-row-data').textContent;
     const containerPersonId = document.querySelector('.container-person');
-
+    const containerPersonField = document.querySelector(
+      '.container-person-field'
+    );
     const modal = document.getElementById('loadModal');
+    const prsdataJSONString = localStorage.getItem(getTextName);
+    const prsdataObjJs = JSON.parse(prsdataJSONString);
+    let name;
+    let surname;
+    let time;
 
     const getNameAndClosePopup = () => {
       const titleOfListHeader = document.querySelector('.title-of-list-header');
       titleOfListHeader.textContent = getTextName;
       modal.style.display = 'none';
     };
-
-    if (getName !== null) {
-      const prsdataJSONString = localStorage.getItem(getTextName);
-      const prsdataObjJs = JSON.parse(prsdataJSONString);
-
-      storageBtn.dataset.save = getTextName;
-      loadBtn.dataset.index = 0;
-
-      const loadRowData = loadPerson => {
-        return UI.addRowData(loadPerson);
-      };
-
-      $('.container-person-field').remove();
-      $('.container-person').addClass('fill');
-      $('#container-person').empty();
-
-      let name;
-      let surname;
-      let time;
-      if (prsdataObjJs == null) {
-        containerPersonId.classList.remove('fill');
-        containerPersonId.innerHTML =
-          '<span class="container-person-field">This field is empty. Please, fill the content by rows.</span>';
-        getNameAndClosePopup();
-      } else {
-        for (let i = 0; i < prsdataObjJs.length; i++) {
-          name = prsdataObjJs[i].name;
-          surname = prsdataObjJs[i].surname;
-          time = prsdataObjJs[i].time;
-
-          const loadPerson = new Person(name, surname, time);
-          loadRowData(loadPerson);
-        }
-        getNameAndClosePopup();
+    const loadRowData = loadPerson => {
+      return UI.addRowData(loadPerson);
+    };
+    const clearListForLoading = container => {
+      containerPersonField === true ? containerPersonField.remove() : false;
+      container.classList.add('fill');
+      while (container.firstChild) {
+        container.firstChild.remove();
       }
+    };
+
+    storageBtn.dataset.save = getTextName;
+    loadBtn.dataset.index = 0;
+
+    clearListForLoading(containerPersonId);
+
+    if (prsdataObjJs == null) {
+      containerPersonId.classList.remove('fill');
+      containerPersonId.innerHTML =
+        '<span class="container-person-field">This field is empty. Please, fill the content by rows.</span>';
+      getNameAndClosePopup();
+    } else {
+      for (let i = 0; i < prsdataObjJs.length; i++) {
+        name = prsdataObjJs[i].name;
+        surname = prsdataObjJs[i].surname;
+        time = prsdataObjJs[i].time;
+
+        const loadPerson = new Person(name, surname, time);
+        loadRowData(loadPerson);
+      }
+      getNameAndClosePopup();
     }
   }
 };
