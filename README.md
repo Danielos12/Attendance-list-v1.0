@@ -52,9 +52,6 @@ It is just a simple application for checking attendance of workers, students or 
 
 https://danielos12.github.io/Attendance-list-v1.0/v2.3/index.html
 
-
-
-
 # Documentation
 
 <a name="topic_5"></a>
