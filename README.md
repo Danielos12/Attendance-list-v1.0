@@ -574,7 +574,7 @@ export default function List(name) {
 }
 
 ```
-<a name="topic_12"></a>
+<a name="topic_13"></a>
 ## How are new lists created?
 
 In a similar way like in **UI.js**
@@ -621,7 +621,7 @@ PopUpUI.clearInput = function(inputname) {
 };
 
 ```
-<a name="topic_13"></a>
+<a name="topic_14"></a>
 ## How are the persons saved?
  In the **navButtons.js** file there is function that I haven't mentioned before. It's `storeDataInLocalStorage()`. In this case is used `localStorage`, which serves as the database. We declare `obj` as an array to put data from the list's rows. Then the `obj` have to be parsed to string by the `stringify` method because data in `local storage` is saving in JSON format. Finally, the `obj` is set by the `setItem` method.
 
@@ -659,7 +659,7 @@ const storeDataInLocalStorage = () => {
   }
 };
 ```
-<a name="topic_13"></a>
+<a name="topic_15"></a>
 ## How is the data loaded?
 
 After saving the data it would be appropiate to load it. In the `inPopup.js` there is certain event, which is responsible for it.
@@ -718,7 +718,7 @@ Thanks to `loadRowData()` the fetched data can be displayed.
     }
   }
 ```
-<a name="topic_14"></a>
+<a name="topic_16"></a>
 ## How the lists is loaded after entry to the website?
 
 The solution is pretty easy. In that issue I have used a loop, to iterate on every key (the key is our list), then based on this I created `list` instance and then I used the `addListData` method to display them.
